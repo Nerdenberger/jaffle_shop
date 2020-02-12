@@ -14,7 +14,8 @@ final as (
 
     select
         orders.customer_id,
-        sum(amount) as total_amount
+        sum(amount) as total_amount,
+        round(avg(amount),2) as average_order_size
 
     from payments
 
