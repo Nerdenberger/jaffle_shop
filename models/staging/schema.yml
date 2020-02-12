@@ -29,3 +29,14 @@ models:
         tests:
           - accepted_values:
               values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']
+
+sources:
+  - name: jaffle_shop
+    database: ad_poc
+    schema: raw
+    tables:
+      - name: customer
+      - name: ORDER
+        quoting:
+          identifier: true
+      - name: payment
