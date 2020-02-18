@@ -18,6 +18,7 @@ final as (
         ,round(avg(amount),2) as average_order_size
         ,sum(case when status = 'returned' then 1 else 0 end) as total_returns
         ,total_returns > 0 as has_returns
+        ,sum(case when status = 'completed' then 1 else 0 end) as completed_orders
     from payments
 
     left join orders using (order_id)
