@@ -13,10 +13,11 @@ orders as (
 final as (
 
     select
-        orders.customer_id,
-        sum(amount) as total_amount,
-        round(avg(amount),2) as average_order_size
-
+        orders.customer_id
+        ,sum(amount) as total_amount
+        ,round(avg(amount),2) as average_order_size
+        ,sum(case when status = 'returned' then 1 else 0 end) as total_returns
+        ,total_returns > 0 as has_returns
     from payments
 
     left join orders using (order_id)
